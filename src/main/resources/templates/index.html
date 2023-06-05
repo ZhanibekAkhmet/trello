@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/main.html">
+<div layout:fragment="productsContent" class="mb-2 ">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    +New folder
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/addFolder" method="post">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">ADD NEW FOLDER</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <h4>FOLDER NAME</h4>
+            <input type="text" required class="form-control" placeholder="Folder name" name="name">
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary">ADD</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3  bg-info rounded" th:each="pap:${papki}" >
+    <div class="col-12 mt-2 bg">
+        <h4 th:text="${pap.name}"></h4>
+      <div class="mt-3 ">
+        <a th:href="@{'/details/'+${pap.id}}" class="btn btn-primary small ">details</a>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+</html>
