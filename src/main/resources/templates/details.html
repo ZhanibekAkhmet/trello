@@ -71,7 +71,7 @@
       </thead>
       <tbody>
       <tr th:each="chel:${zadane}">
-        <input type="hidden" th:value="${chel.folder.id}" name="folder">
+
         <td th:text="${chel.id}"></td>
         <td th:text="${chel.title}"></td>
         <td th:if="${chel.status==0}" style="color:blue">todo</td>
@@ -100,6 +100,7 @@
             <h4>Description</h4>
             <input type="text" required class="form-control" placeholder="Folder name" name="description">
             <input type="hidden" th:value="0" name="status">
+            <input type="hidden" th:value="${folderId}" name="folder.id">
 
 
           </div>
